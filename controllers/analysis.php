@@ -27,5 +27,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require __DIR__ . '/../views/analysis.view.php';
+view('analysis.view.php');
 

@@ -149,6 +149,13 @@ body .container .content .main {
     
 }
 
+.actionbuttoncontainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
 .importpgnsubmit {
     background: var(--chessboard-bg-color1);
 }

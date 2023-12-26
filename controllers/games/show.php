@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . '/../core/Database.php';
-$config = require __DIR__ . '/../config.php';
+require __DIR__ . '/../../core/Database.php';
+$config = require __DIR__ . '/../../config.php';
 $db = new Database($config['database']);
 
 $game = $db->query('SELECT * FROM games WHERE id = :id', [
@@ -18,6 +18,6 @@ if ($game) {
     $pgn = $game['PGN'];
 }
 
-require('views/game.view.php');
+view ('games/show.view.php');
 
 

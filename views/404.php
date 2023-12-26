@@ -1,5 +1,5 @@
-<?php require('views/partials/head.php');?>
-<?php require('views/partials/banner.php'); ?>
+<?php require base_path('views/partials/head.php'); ?>
+<?php require base_path('views/partials/banner.php'); ?>
 
 <div class="content">
     <div class="main">
@@ -10,3 +10,4 @@
 </div>
 
 
+<?php require base_path('views/partials/footer.php'); ?>

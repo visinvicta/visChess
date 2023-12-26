@@ -5,10 +5,11 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
     '/about' => 'controllers/about.php',
     '/analysis' => 'controllers/analysis.php',
-    '/databasegames' => 'controllers/databasegames.php',
+    '/game' => 'controllers/games/show.php',
+    '/games' => 'controllers/games/index.php',
     '/mygames' => 'controllers/mygames.php',
     '/' => 'controllers/index.php',
-    '/game' => 'controllers/game.php',
+    
 ];
 
 

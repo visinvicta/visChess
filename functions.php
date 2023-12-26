@@ -8,9 +8,17 @@ function dd($value) {
     die();
 }
 
-function authorize ($condition) {
-    if (! $condition) {
+function authorize($condition) {
+    if (!$condition) {
         abort(Response::FORBIDDEN);
     }
+}
 
+function base_path($path) {
+    return BASE_PATH . $path;
+}
+
+function view($path) {
+
+     require base_path('views/' . $path);
 }

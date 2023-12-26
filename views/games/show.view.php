@@ -1,5 +1,5 @@
-<?php require __DIR__ . '../partials/head.php'; ?>
-<?php require __DIR__ . '../partials/banner.php'; ?>
+<?php require __DIR__ . '/../partials/head.php'; ?>
+<?php require __DIR__ . '/../partials/banner.php'; ?>
 
 <div class="content">
     <div class="main">
@@ -22,4 +22,4 @@
 <script src="./js/boardconfiggame.js"></script>
 
 
-<?php require __DIR__ . '../partials/footer.php'; ?>
+<?php require __DIR__ . '/../partials/footer.php'; ?>

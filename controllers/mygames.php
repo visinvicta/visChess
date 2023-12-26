@@ -1,4 +1,4 @@
 <?php
 
-require('views/mygames.view.php');
+view('mygames/index.view.php');
 
