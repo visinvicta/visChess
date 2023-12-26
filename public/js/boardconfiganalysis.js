@@ -40,7 +40,7 @@ function updateStatusAll() {
   $pgn.html(game.pgn())
 }
 
-function updateStatusNoPGN() {
+function updateStatusNoPGN(status) {
   board.position(game.fen());
   $status.html(status)
   $fen.html(game.fen())
@@ -132,7 +132,7 @@ function sendResult() {
   }
 
   if (importmoves !== '') {
-    fetch('controllers/analysis.php', {
+    fetch('/analysis', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'

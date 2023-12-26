@@ -9,5 +9,7 @@ $games = $db->get();
 
 
 
-view('games/index.view.php');
+view('games/index.view.php', [
+    'games' => $games
+]);
 

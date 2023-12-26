@@ -9,6 +9,9 @@
 
         <div class="chessboard">
             <div id="analysisboard" style="width: 596px"></div>
+            <div class="scrollbuttoncontainer">
+                <button id="leftscroll" class="chessbutton leftscroll"><-</button><button id="rightscroll" class="chessbutton rightscroll">-></button>
+            </div>
             <label>Status:</label>
             <div class="statuscontainer" id="status"></div>
             <label>FEN:</label>

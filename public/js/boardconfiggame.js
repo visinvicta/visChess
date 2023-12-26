@@ -4,7 +4,7 @@ var $status = $('#status')
 var $fen = $('#fen')
 var $pgn = $('#pgn')
 board = Chessboard('analysisboard', config)
-updateStatusAll()
+
 
 function updateStatusAll() {
     var status = ''
@@ -40,10 +40,12 @@ function updateStatusAll() {
     $pgn.html(game.pgn())
 }
 
-function updateStatusNoPGN() {
+function updateStatusNoPGN(status) {
+    
     board.position(game.fen());
     $status.html(status)
     $fen.html(game.fen())
+    
 }
 
 var config = {
@@ -80,23 +82,47 @@ function nextMove() {
     updateStatusNoPGN();
 }
 
+const leftscroll = document.getElementById("leftscroll");
+const rightscroll = document.getElementById("rightscroll");
+
+leftscroll.addEventListener('click', function () {
+
+  if (scrollPosition > 0) {
+    scrollPosition--;
+    nextMove();
+  };
+
+});
+
+rightscroll.addEventListener('click', function () {
+
+  if (scrollPosition < importmoves.length) {
+    scrollPosition++;
+    nextMove();
+  }
+
+  console.log(`Game Move Count: ${scrollPosition}`);
+});
+
 document.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowLeft') {
-        if (scrollPosition > 0) {
-            scrollPosition--;
-            nextMove();
-        };
+  if (event.key === 'ArrowLeft') {
+    if (scrollPosition > 0) {
+      scrollPosition--;
+      nextMove();
+    };
 
-    } else if (event.key === 'ArrowRight') {
-        if (scrollPosition < importmoves.length) {
-            scrollPosition++;
-            nextMove();
-        }
-
+  } else if (event.key === 'ArrowRight') {
+    if (scrollPosition < importmoves.length) {
+      scrollPosition++;
+      nextMove();
     }
 
-    console.log(`Game Move Count: ${scrollPosition}`);
+  }
+
+  console.log(`Game Move Count: ${scrollPosition}`);
 });
+
+
 
 
 

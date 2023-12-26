@@ -18,6 +18,8 @@ if ($game) {
     $pgn = $game['PGN'];
 }
 
-view ('games/show.view.php');
+view ('games/show.view.php', [
+    'game' => $game
+]);
 
 
