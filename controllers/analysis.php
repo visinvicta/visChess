@@ -1,28 +1,31 @@
 <?php
-
+require __DIR__ . '/../core/Validator.php';
+require __DIR__ . '/../core/Database.php';
+$config = require __DIR__ . '/../config.php';
+$db = new Database($config['database']);
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    require '../core/Database.php';
-    
-
+    require __DIR__ . '/../functions.php';
+    $errors = [];
     $data = file_get_contents("php://input");
     $game = json_decode($data, true);
+    
+    if (! Validator::string($game['gamepgn'], 1, 1500)) {
+        $errors['body'] = 'A body of no more than 1500 characters is required.';
+        die();
+    }
+    
+    if (empty($errors)) {
+       
+        $db->query('INSERT INTO games (user_id, PGN) VALUES (:userid, :gamepgn)', [
+            'userid' => $game['userid'],
+            'gamepgn' => $game['gamepgn'],            
+        ]);
 
-    if (isset($game['userid'], $game['gamepgn']) && $game['userid'] !== '' && $game['gamepgn'] !== '') {
-        $db = new Database();
-
-        $query = "INSERT INTO games (user_id, PGN) VALUES (:userid, :gamepgn)";
-
-        $statement = $db->connection->prepare($query);
-
-        $statement->bindParam(':userid', $game['userid']);
-        $statement->bindParam(':gamepgn', $game['gamepgn']);
-
-        $statement->execute();
+       
     }
 }
 
-require('views/analysis.view.php');
+require __DIR__ . '/../views/analysis.view.php';
 

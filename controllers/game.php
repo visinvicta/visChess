@@ -1,25 +1,18 @@
 <?php
-require 'core/Database.php';
 
+require __DIR__ . '/../core/Database.php';
+$config = require __DIR__ . '/../config.php';
+$db = new Database($config['database']);
 
-
-
-$db = new Database();
 $game = $db->query('SELECT * FROM games WHERE id = :id', [
     'id' => $_GET['id']
     
-    ])->fetch();
+    ])->findOrFail();
 
 $currentUserId = 1;
 
 
-if (! $game) {
-    abort();
-}    
-
-if ($game['user_id'] !== $currentUserId) {
-    abort(Response::FORBIDDEN);
-}
+authorize($game['user_id'] == $currentUserId);
 
 if ($game) {
     $pgn = $game['PGN'];

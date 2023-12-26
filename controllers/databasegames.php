@@ -1,13 +1,11 @@
 <?php
 
-require 'core/Database.php';
+require __DIR__ . '/../core/Database.php';
+$config = require __DIR__ . '/../config.php';
+$db = new Database($config['database']);
 
-$db = new Database();
-$query = "select * from games";
-
-$statement = $db->connection->prepare($query);
-$statement->execute();
-$games = $statement->fetchall();
+$db->query("select * from games");
+$games = $db->get();
 
 require('views/databasegames.view.php');
 

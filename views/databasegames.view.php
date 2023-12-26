@@ -1,5 +1,5 @@
-<?php require('views/partials/head.php'); ?>
-<?php require('views/partials/banner.php'); ?>
+<?php require __DIR__ . '../partials/head.php'; ?>
+<?php require __DIR__ . '../partials/banner.php'; ?>
 
 <div class="content">
     <div class="main">
@@ -24,9 +24,9 @@
                                 <div class="gamepgn"><?= $game['PGN'] ?></div>
                                 <div class="buttoncontainer">
 
-                                    <a href="/game?id=<?= $game['id'] ?>" class="analysisbutton">Open in analysisboard</a>
-                                    <a href="/game?id=<?= $game['id'] ?>" class="mygamesbutton">Add to My Games</a>
-                                    <a href="/game?id=<?= $game['id'] ?>" class="deletebutton">Delete</a>
+                                    <a href="/game?id=<?= $game['id'] ?>" class="chessbutton analysisbutton">Open in analysisboard</a>
+                                    <a href="/game?id=<?= $game['id'] ?>" class="chessbutton mygamesbutton">Add to My Games</a>
+                                    <a href="/game?id=<?= $game['id'] ?>" class="chessbutton deletebutton">Delete</a>
 
                                 </div>
                             </div>
@@ -43,4 +43,4 @@
 
 <script src="./js/boardconfigdbgames.js"></script>
 <!-- <script src="./js/boardconfiganalysis.js"></script> -->
-<!-- <?php require('views/partials/footer.php'); ?> -->
+<!-- <?php require __DIR__ . '../partials/footer.php'; ?> -->

@@ -7,3 +7,10 @@ function dd($value) {
 
     die();
 }
+
+function authorize ($condition) {
+    if (! $condition) {
+        abort(Response::FORBIDDEN);
+    }
+
+}

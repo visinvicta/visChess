@@ -7,92 +7,83 @@
     --main-bg-color: #a0bbd4;
     --footer-bg-color: #EEF4ED;
     --page-text-color: #adadad;
+    --chessboard-bg-color1: #b08b65;
+    --chessboard-bg-color2: #f3dbb3;
 }
 
 body {
     background-color: var(--page-bg-color);
     font-family: Arial, Helvetica, sans-serif;
+}
 
-    .container {
-        background-color: var(--page-bg-color);
-        border-radius: 5px;
-        padding: 5px;
-        width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-        color: var(--page-text-color);
+.container {
+    background-color: var(--page-bg-color);
+    border-radius: 5px;
+    padding: 5px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--page-text-color);
+}
 
-        .nav {
-            margin: 5px 0px 5px 0px;
-            background-color: var(--page-bg-color);
-            border-radius: 5px;
-            padding: 0px;
-            color: var(--page-text-color);
-            display: flex;
+.nav {
+    margin: 5px 0px 5px 0px;
+    background-color: var(--page-bg-color);
+    border-radius: 5px;
+    padding: 0px;
+    color: var(--page-text-color);
+    display: flex;
+}
 
-            .navOptions {
-                border-radius: 5px;
-                margin-top: 5px;
-                margin-bottom: 5px;
-                margin-right: 15px;
-                
-                font-size: 25px;
-                text-decoration: none;
-                color: var(--page-text-color);
-            }
+.navOptions {
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 15px;
+    font-size: 25px;
+    text-decoration: none;
+    color: var(--page-text-color);
+}
 
-            .login {
-                
-                margin-left: auto;
+.login {
+    margin-left: auto;
+}
 
-            }
-        }
-  
-        .content {
-            margin: 10px 0px 10px 0px;
-            background-color: var(--page-bg-color2);
-            border-radius: 5px;
-            height: 100vh;
-            padding: 2px;
-            color: var(--page-text-color);
+.content {
+    margin: 10px 0px 10px 0px;
+    background-color: var(--page-bg-color2);
+    border-radius: 5px;
+    height: 100vh;
+    padding: 2px;
+    color: var(--page-text-color);
+}
 
-            .main {
-                margin: 10px 0px 10px 0px;
-                border-radius: 5px;
-                padding: 5px;
-                background-color: var(--page-bg-color2);
-                color: var(--page-text-color);
+body .container .content .main {
+    margin: 10px 0px 10px 0px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--page-bg-color2);
+    color: var(--page-text-color);
+}
 
-                .chessboard {
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 600px;
-                    padding: 10px;
-                }
+.chessboard {
+    margin-left: auto;
+    margin-right: auto;
+    width: 596px;
+    padding: 10px;
+    
+}
 
-                #importpgn {
-                    width: 400px;
-                    height: 50px;
-                    margin-top: 20px;
-                }
+.header {
+    text-align: center;
+}
 
-                .header {
-                    text-align: center;
-
-                    
-                }
-            }
-        }
-
-        .footer {
-            margin: 10px 0px 10px 0px;
-            background-color: var(--page-bg-color);
-            border-radius: 5px;
-            color: var(--page-text-color);
-            text-align: center;
-            
-        }
-    }
+.footer {
+    margin: 10px 0px 10px 0px;
+    background-color: var(--page-bg-color);
+    border-radius: 5px;
+    color: var(--page-text-color);
+    text-align: center;
 }
 
 .dbgames {
@@ -108,6 +99,7 @@ body {
 .gameinfocontainer {
     display: flex;
     flex-direction: column;
+    
 }
 .gameinfocontainer.buttoncontainer {
     flex-direction: column;
@@ -118,7 +110,6 @@ body {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    
 }
 
 .gameboard {
@@ -129,21 +120,23 @@ body {
     width: 700px;
     Height: 110px;
     padding: 5px;
+    overflow: hidden;
+    line-height: 1.2em; 
+    max-height: 7.2em;
+    /* font-family: 'Courier New', Courier, monospace; */
+   
 }
 
 .gameusername {
     padding: 5px;
 }
-
-.analysisbutton {
+.chessbutton {
     display: inline-block;
     padding: 0 15px;
     height: 30px;
     line-height: 30px;
-    background: #b08b65;
     color: #000000;
     text-decoration: none;
-    
     text-align: center;
     position: relative;
     z-index: 0;
@@ -153,47 +146,82 @@ body {
     user-select: none;
     overflow: hidden;
     white-space: nowrap;
+    
+}
+
+.importpgnsubmit {
+    background: var(--chessboard-bg-color1);
+}
+
+.posttodb {
+    background: var(--chessboard-bg-color2);
+}
+
+.analysisbutton {
+
+    background: var(--chessboard-bg-color1);
     
 }
 
 .mygamesbutton {
-    display: inline-block;
-    padding: 0 15px;
-    height: 30px;
-    line-height: 30px;
-    background: #f3dbb3;
-    color: #000000;
-    text-decoration: none;
-    
-    text-align: center;
-    position: relative;
-    z-index: 0;
-    margin: 5px;
-    border: 0;
-    border-radius: 23px;
-    user-select: none;
-    overflow: hidden;
-    white-space: nowrap;
+   
+    background: var(--chessboard-bg-color2);
    
 }
 
 .deletebutton {
-    display: inline-block;
-    padding: 0 15px;
-    height: 30px;
-    line-height: 30px;
     background: #d12b2b;
-    color: #000000;
-    text-decoration: none;
-    
-    text-align: center;
-    position: relative;
-    z-index: 0;
-    margin: 5px;
-    border: 0;
-    border-radius: 23px;
-    user-select: none;
-    overflow: hidden;
-    white-space: nowrap;
-   
+     
 }
+
+.importpgn {
+    height: 100px;
+    background: var(--page-bg-color);
+    color: var(--page-text-color);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--page-text-color);
+    font-weight: bold;
+    
+}
+
+.statuscontainer, .fencontainer, .pgncontainer {
+    border: 1px solid #CCCCCC;
+    padding: 7px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: var(--page-bg-color);
+    min-height: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--page-text-color);
+    overflow-wrap: break-word;
+    width: 596px;
+    box-sizing: border-box;
+    
+}
+
+.test {
+    overflow-y: auto;
+    
+}
+
+.scrollbuttoncontainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.leftscroll {
+    width: 100px;
+    background-color: var(--chessboard-bg-color2);
+    
+}
+
+.rightscroll {
+    width: 100px;
+    background-color: var(--chessboard-bg-color1);
+}    

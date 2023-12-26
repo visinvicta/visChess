@@ -55,7 +55,7 @@ let copyPGN = '';
 let importmoves = [];
 
 document.addEventListener('DOMContentLoaded', function () {
-    let pgnDataElement = document.querySelector('.gamepgn'); 
+    let pgnDataElement = document.querySelector('.boardgamepgn'); 
     if (pgnDataElement) {
         let pgnData = pgnDataElement.textContent.trim(); 
         game.load_pgn(pgnData);
@@ -95,7 +95,7 @@ document.addEventListener('keydown', function (event) {
 
     }
 
-    console.log(`Game Move Count: ${scrollPosition}`); // For debugging purposes
+    console.log(`Game Move Count: ${scrollPosition}`);
 });
 
 

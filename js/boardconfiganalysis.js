@@ -62,10 +62,10 @@ importButton.addEventListener("click", function () {
   copyPGN = importField.value;
   importmoves = copyPGN.replace(/\d+\.\s+/g, '').split(/\s+/).filter(move => move.trim() !== '');
   scrollPosition = importmoves.length;
- 
+
   updateStatusAll();
-  importField.value = '';
-  
+  // importField.value = '';
+
 })
 
 function nextMove() {
@@ -78,22 +78,44 @@ function nextMove() {
   updateStatusNoPGN();
 }
 
-document.addEventListener('keydown', function(event) {
+const leftscroll = document.getElementById("leftscroll");
+const rightscroll = document.getElementById("rightscroll");
+
+leftscroll.addEventListener('click', function () {
+
+  if (scrollPosition > 0) {
+    scrollPosition--;
+    nextMove();
+  };
+
+});
+
+rightscroll.addEventListener('click', function () {
+
+  if (scrollPosition < importmoves.length) {
+    scrollPosition++;
+    nextMove();
+  }
+
+  console.log(`Game Move Count: ${scrollPosition}`);
+});
+
+document.addEventListener('keydown', function (event) {
   if (event.key === 'ArrowLeft') {
-    if (scrollPosition > 0) { 
+    if (scrollPosition > 0) {
       scrollPosition--;
       nextMove();
     };
-    
-  } else if (event.key === 'ArrowRight') { 
+
+  } else if (event.key === 'ArrowRight') {
     if (scrollPosition < importmoves.length) {
       scrollPosition++;
       nextMove();
     }
-    
+
   }
 
-  console.log(`Game Move Count: ${scrollPosition}`); // For debugging purposes
+  console.log(`Game Move Count: ${scrollPosition}`);
 });
 
 
@@ -104,22 +126,22 @@ const dbbutton = document.getElementById("posttodb");
 dbbutton.addEventListener("click", sendResult);
 
 function sendResult() {
-    let game = {
-      "userid": 1,
-      "gamepgn": copyPGN,
+  let game = {
+    "userid": 1,
+    "gamepgn": copyPGN,
   }
 
   if (importmoves !== '') {
-      fetch('controllers/analysis.php', {
-          method: 'POST',
-          headers: {
-              'Content-type': 'application/json'
-          },
-          body: JSON.stringify(game)
-      }).then(function (response) {
-          return response.text();
-      }).then(function (data) {
-          console.log(data);
-      })
+    fetch('controllers/analysis.php', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(game)
+    }).then(function (response) {
+      return response.text();
+    }).then(function (data) {
+      console.log(data);
+    })
   }
 }
