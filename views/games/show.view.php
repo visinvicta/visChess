@@ -18,6 +18,14 @@
             <div class="fencontainer" id="fen"></div>
             <label>PGN:</label>
             <div class="boardgamepgn pgncontainer importpgn test"><?= $game['PGN'] ?></div>
+
+            <div>
+                <form method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="id" value="<?= $game['id'] ?>">
+                    <button class="deletebutton chessbutton">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

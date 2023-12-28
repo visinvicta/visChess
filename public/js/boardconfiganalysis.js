@@ -62,7 +62,6 @@ importButton.addEventListener("click", function () {
   copyPGN = importField.value;
   importmoves = copyPGN.replace(/\d+\.\s+/g, '').split(/\s+/).filter(move => move.trim() !== '');
   scrollPosition = importmoves.length;
-
   updateStatusAll();
   // importField.value = '';
 
@@ -82,21 +81,17 @@ const leftscroll = document.getElementById("leftscroll");
 const rightscroll = document.getElementById("rightscroll");
 
 leftscroll.addEventListener('click', function () {
-
   if (scrollPosition > 0) {
     scrollPosition--;
     nextMove();
   };
-
 });
 
 rightscroll.addEventListener('click', function () {
-
   if (scrollPosition < importmoves.length) {
     scrollPosition++;
     nextMove();
   }
-
   console.log(`Game Move Count: ${scrollPosition}`);
 });
 
@@ -112,15 +107,9 @@ document.addEventListener('keydown', function (event) {
       scrollPosition++;
       nextMove();
     }
-
   }
-
   console.log(`Game Move Count: ${scrollPosition}`);
 });
-
-
-
-
 
 const dbbutton = document.getElementById("posttodb");
 dbbutton.addEventListener("click", sendResult);

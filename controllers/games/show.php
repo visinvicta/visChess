@@ -1,8 +1,9 @@
 <?php
 
-require __DIR__ . '/../../core/Database.php';
-$config = require __DIR__ . '/../../config.php';
-$db = new Database($config['database']);
+use Core\Database;
+use Core\App;
+
+$db = App::resolve(Database::class);
 
 $game = $db->query('SELECT * FROM games WHERE id = :id', [
     'id' => $_GET['id']

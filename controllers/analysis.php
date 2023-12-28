@@ -1,9 +1,13 @@
 <?php
 
-$config = require __DIR__ . '/../config.php';
-$db = new Database($config['database']);
+use Core\Validator;
+use Core\Database;
+use Core\App;
+
+$db = App::resolve(Database::class);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $errors = [];
     $data = file_get_contents("php://input");
     $game = json_decode($data, true);
@@ -14,15 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (empty($errors)) {
-       
-        $db->query('INSERT INTO games (user_id, PGN) VALUES (:userid, :gamepgn)', [
+            $db->query('INSERT INTO games (user_id, PGN) VALUES (:userid, :gamepgn)', [
             'userid' => $game['userid'],
             'gamepgn' => $game['gamepgn'],            
         ]);
-
-       
     }
-    dd($db);
 }
 
 view('analysis.view.php');

@@ -24,10 +24,24 @@
                                 <div class="gamepgn"><?= $game['PGN'] ?></div>
                                 <div class="buttoncontainer">
 
-                                    <a href="/game?id=<?= $game['id'] ?>" class="chessbutton analysisbutton">Open in analysisboard</a>
-                                    <a href="/game?id=<?= $game['id'] ?>" class="chessbutton mygamesbutton">Add to My Games</a>
-                                    <a href="/game?id=<?= $game['id'] ?>" class="chessbutton deletebutton">Delete</a>
 
+                                    <form action="/game" method="GET">
+                                        <input type="hidden" name="id" value="<?= $game['id'] ?>">
+                                        <input type="submit" class="chessbutton analysisbutton" value="Open in analysisboard">
+                                    </form>
+
+                                    <form method="POST">
+                                        <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
+                                        <input type="submit" class="chessbutton mygamesbutton" value="Add to My Games">
+                                    </form>
+
+                                    <form action="/game" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="id" value="<?= $game['id'] ?>">
+                                        <input type="submit" class="chessbutton deletebutton" value="Delete">
+                                    </form>
+
+                                    
                                 </div>
                             </div>
                         </div>
