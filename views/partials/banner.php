@@ -7,6 +7,10 @@
             <a class="navOptions" href="games">Database</a>
             <a class="navOptions" href="analysis">Analysis</a>
             <a class="navOptions" href="about">About</a>
-            <a class="navOptions login" href=>Sign up</a>
-            
+
+            <?php if ($_SESSION['user'] ?? false) : ?>
+                <a class="navOptions login" href=>Welcome</a>
+            <?php else : ?>
+                <a class="navOptions login" href=register>Register</a>
+            <?php endif; ?>
         </nav>

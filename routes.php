@@ -13,4 +13,5 @@ $router->delete('/game', 'controllers/games/destroy.php');
 
 $router->get('/mygames', 'controllers/mygames.php');
 
-
+$router->get('/register', 'controllers/registration/create.php');
+$router->post('/register', 'controllers/registration/store.php');
