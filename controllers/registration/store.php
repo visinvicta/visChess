@@ -35,11 +35,11 @@ $existingemail = $db->query('select * from users where email = :email', [
     'email' => $email
 ])->find();
 
-$existingusername = $db->query('select * from users where username = :username', [
+$user = $db->query('select * from users where username = :username', [
     'username' => $username
 ])->find();
 
-if ($existingemail || $existingusername) {
+if ($existingemail || $user) {
     header('location: /');
     exit();
 
@@ -47,12 +47,10 @@ if ($existingemail || $existingusername) {
     $db->query('INSERT INTO users(email, username, password) VALUES(:email, :username, :password)', [
         'email' => $email,
         'username' => $username,
-        'password' => $password 
+        'password' => password_hash($password, $PASSWORD_BCRYPT)
     ]);
 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login($user);
 
     header('location: /');
     exit();

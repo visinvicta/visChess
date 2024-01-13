@@ -6,6 +6,8 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = [];
