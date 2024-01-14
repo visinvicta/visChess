@@ -4,7 +4,7 @@
 <div class="content">
     <div class="main">
         <div class="header">
-            <h1>Home</h1>
+            <h1><?="Welcome, " . ($_SESSION['user']['name']['username'] ?? "Guest")?></h1>
         </div>
 
         <div class="chessboard">

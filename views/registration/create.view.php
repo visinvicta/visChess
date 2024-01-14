@@ -11,13 +11,13 @@
             <div class="register_container">
                                
             <label for="username"><b>Username</b></label>
-                <input type="username" name="username" id="username" required>
+                <input class="registerfield" type="username" name="username" id="username" required>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" name="email" id="email" required>
+                <input class="registerfield" type="text" name="email" id="email" required>
 
                 <label for="password"><b>Password</b></label>
-                <input type="password" name="password" id="password" required><br>
+                <input class="registerfield" type="password" name="password" id="password" required><br>
 
                 <!-- <label for="password-repeat"><b>Repeat Password</b></label>
                 <input type="password" name="password-repeat" id="password-repeat" required> -->
@@ -30,11 +30,12 @@
                         <li><?= $errors['password'] ?></li>
                     <?php endif; ?>
                 
-                <button type="submit" class="registerbtn">Register</button>
-            </div>
+                <button type="submit" class="registerbtn chessbutton">Register</button>
+            
 
             <div class="signin_container">
                 <p>Already have an account? <a href="/login">Sign in</a>.</p>
+            </div>
             </div>
         </form>
     </div>

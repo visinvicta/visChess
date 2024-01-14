@@ -45,8 +45,20 @@ body {
     color: var(--page-text-color);
 }
 
-.login {
+
+.register {
     margin-left: auto;
+    padding-top: 5px;
+    
+}
+
+.logout {
+    border: none;
+    font-size: 25px;
+    text-decoration: none;
+    color: var(--page-text-color);
+    background: none;
+    background-color: none;
 }
 
 .content {
@@ -232,3 +244,28 @@ label {
     width: 100px;
     background-color: var(--chessboard-bg-color1);
 }    
+
+.registerfield {
+    border: 1px solid #CCCCCC;
+    padding: 7px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: var(--page-bg-color);
+    min-height: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--page-text-color);
+    overflow-wrap: break-word;
+    width: 396px;
+    box-sizing: border-box;
+    
+}
+
+.register_container {
+    padding-top: 50px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+}

@@ -11,10 +11,10 @@
             <div class="register_container">
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" name="email" id="email" required>
+                <input class="registerfield" type="text" name="email" id="email" required>
 
                 <label for="password"><b>Password</b></label>
-                <input type="password" name="password" id="password" required><br>
+                <input class="registerfield" type="password" name="password" id="password" required><br>
 
                 <?php if (isset($errors['email'])) : ?>
                     <li><?= $errors['email'] ?></li>
@@ -24,7 +24,7 @@
                     <li><?= $errors['password'] ?></li>
                 <?php endif; ?>
 
-                <button type="submit" class="registerbtn">Log in</button>
+                <button type="submit" class="registerbtn chessbutton">Log in</button>
             </div>
 
         </form>
