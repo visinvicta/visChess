@@ -1,21 +1,21 @@
 <?php
 
-$router->get('/', 'controllers/index.php');
+$router->get('/', 'index.php');
 
-$router->get('/analysis', 'controllers/analysis.php');
-$router->post('/analysis', 'controllers/analysis.php');
+$router->get('/analysis', 'analysis.php');
+$router->post('/analysis', 'analysis.php');
 
-$router->get('/about', 'controllers/about.php');
+$router->get('/about', 'about.php');
 
-$router->get('/games', 'controllers/games/index.php');
-$router->get('/game', 'controllers/games/show.php');
-$router->delete('/game', 'controllers/games/destroy.php');
+$router->get('/games', 'games/index.php');
+$router->get('/game', 'games/show.php');
+$router->delete('/game', 'games/destroy.php');
 
-$router->get('/mygames', 'controllers/mygames.php')->only('auth');
+$router->get('/mygames', 'mygames.php')->only('auth');
 
-$router->get('/register', 'controllers/registration/create.php')->only('guest');
-$router->post('/register', 'controllers/registration/store.php')->only('guest');
+$router->get('/register', 'registration/create.php')->only('guest');
+$router->post('/register', 'registration/store.php')->only('guest');
 
-$router->get('/login', 'controllers/session/create.php')->only('guest');
-$router->post('/session', 'controllers/session/store.php')->only('guest');
-$router->delete('/session', 'controllers/session/destroy.php')->only('auth');
+$router->get('/login', 'session/create.php')->only('guest');
+$router->post('/session', 'session/store.php')->only('guest');
+$router->delete('/session', 'session/destroy.php')->only('auth');

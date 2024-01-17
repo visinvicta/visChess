@@ -3,7 +3,9 @@
     <div class="container">
         <nav class="nav" id="test">
             <a class="navOptions" href="/">Home</a>
+            <?php if ($_SESSION['user'] ?? false) : ?>
             <a class="navOptions" href="mygames">My Games</a>
+            <?php endif; ?>
             <a class="navOptions" href="games">Database</a>
             <a class="navOptions" href="analysis">Analysis</a>
             <a class="navOptions" href="about">About</a>
