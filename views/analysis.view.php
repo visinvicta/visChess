@@ -9,7 +9,10 @@
         <div class="chessboard">
             <div id="analysisboard" style="width: 596px"></div>
             <div class="scrollbuttoncontainer">
-                <button id="leftscroll" class="chessbutton leftscroll"><-</button><button id="rightscroll" class="chessbutton rightscroll">-></button>
+                <button id="leftscroll" class="chessbutton leftscroll"><-</button>
+                <button id="rightscroll" class="chessbutton rightscroll">-></button>
+                <button id="flipboard" class="chessbutton flipboard">Flip</button>
+
             </div>
             <label>Status:</label>
             <div class="statuscontainer" id="status"></div>
@@ -19,7 +22,10 @@
             <textarea class="boardgamepgn pgncontainer importpgn" id="importpgn" type="text"></textarea><br>
             <div class="actionbuttoncontainer">
                 <button class="chessbutton importpgnsubmit" id="importpgnsubmit">Import PGN</button>
+                <?php if ($_SESSION['user'] ?? false) : ?>
                 <button class="chessbutton posttodb" id="posttodb">Add to Database</button>
+                <button class="chessbutton posttomygames" id="posttomygames">Add to My Games</button>
+                <?php endif;?>
             </div>
         </div>
 

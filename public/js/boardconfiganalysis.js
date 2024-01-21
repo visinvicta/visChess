@@ -14,21 +14,17 @@ function updateStatusAll() {
     moveColor = 'Black'
   }
 
-  // checkmate?
   if (game.in_checkmate()) {
     status = 'Game over, ' + moveColor + ' is in checkmate.'
   }
 
-  // draw?
   else if (game.in_draw()) {
     status = 'Game over, drawn position'
   }
 
-  // game still on
   else {
     status = moveColor + ' to move'
 
-    // check?
     if (game.in_check()) {
       status += ', ' + moveColor + ' is in check'
     }
@@ -69,9 +65,9 @@ importButton.addEventListener("click", function () {
 
 function nextMove() {
   let splitPGN = copyPGN;
-  const moves = splitPGN.replace(/\d+\.\s+/g, '').split(/\s+/).filter(move => move.trim() !== '');
-  const firstmoves = moves.slice(0, scrollPosition);
-  const formattedMoves = firstmoves.map((move, index) => `${index + 1}. ${move}`);
+  const moves = splitPGN.replace(/\d+\.\s+/g, '').split(/\s+/).filter(move => move.trim() !== ''); // parse the PGN to a string without numbers (1. e4 e5 2. d4 d5 -> e4 e5 d4 d5)
+  const parsedPGN = moves.slice(0, scrollPosition); // select the new part of the PGN to import
+  const formattedMoves = parsedPGN.map((move, index) => `${index + 1}. ${move}`); // add the numbers back
   const formattedString = formattedMoves.join(' ');
   game.load_pgn(formattedString);
   updateStatusNoPGN();
@@ -111,26 +107,34 @@ document.addEventListener('keydown', function (event) {
   console.log(`Game Move Count: ${scrollPosition}`);
 });
 
-const dbbutton = document.getElementById("posttodb");
-dbbutton.addEventListener("click", sendResult);
-
-function sendResult() {
-  let game = {
-    "userid": 1,
-    "gamepgn": copyPGN,
-  }
-
+function sendDataToServer(endpoint) {
   if (importmoves !== '') {
-    fetch('/analysis', {
+    fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(game)
-    }).then(function (response) {
-      return response.text();
-    }).then(function (data) {
-      console.log(data);
+      body: JSON.stringify({ "gamepgn": copyPGN })
     })
+      .then(response => response.text())
+      .then(data => console.log(data));
   }
 }
+
+
+const dbbutton = document.getElementById("posttodb");
+if (dbbutton) {
+  dbbutton.addEventListener("click", () => sendDataToServer('/analysis'));
+}
+
+const mygamesbutton = document.getElementById("posttomygames");
+if (mygamesbutton) {
+  mygamesbutton.addEventListener("click", () => sendDataToServer('/mygames'));
+}
+
+function flipBoard() {
+  board.flip();
+}
+
+const flipboard = document.getElementById("flipboard");
+flipboard.addEventListener("click", () => flipBoard());

@@ -5,7 +5,7 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$db->query("select * from games");
+$db->query('SELECT * FROM games');
 $games = $db->get();
 
 view('games/index.view.php', [

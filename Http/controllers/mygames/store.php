@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (empty($errors)) {
-            $db->query('INSERT INTO games (user_id, PGN) VALUES (:userid, :gamepgn)', [
+            $db->query('INSERT INTO mygames (user_id, PGN) VALUES (:userid, :gamepgn)', [
             'userid' => $_SESSION['user']['id']['id'],
             'gamepgn' => $game['gamepgn'],            
         ]);

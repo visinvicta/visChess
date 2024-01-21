@@ -123,7 +123,12 @@ document.addEventListener('keydown', function (event) {
 });
 
 
+function flipBoard() {
+  board.flip();
+}
 
+const flipboard = document.getElementById("flipboard");
+flipboard.addEventListener("click", () => flipBoard());
 
 
 

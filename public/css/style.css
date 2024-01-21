@@ -176,6 +176,10 @@ body .container .content .main {
     background: var(--chessboard-bg-color2);
 }
 
+.posttomygames {
+    background: var(--chessboard-bg-color1);
+}
+
 .analysisbutton {
 
     background: var(--chessboard-bg-color1);

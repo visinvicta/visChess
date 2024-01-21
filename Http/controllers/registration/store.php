@@ -31,12 +31,11 @@ if (!empty($errors)) {
     ]);
 }
 
-
-$existingemail = $db->query('select * from users where email = :email', [
+$existingemail = $db->query('SELECT * FROM users WHERE email = :email', [
     'email' => $email
 ])->find();
 
-$user = $db->query('select * from users where username = :username', [
+$user = $db->query('SELECT * FROM users WHERE username = :username', [
     'username' => $username
 ])->find();
 
@@ -53,9 +52,10 @@ if ($existingemail || $user) {
 
     $authenticator = new Authenticator();
 
-
+   
     $authenticator->login($user);
 
+    
     header('location: /');
     exit();
 }

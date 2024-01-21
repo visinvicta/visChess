@@ -24,8 +24,7 @@
                                 <div class="gamepgn"><?= $game['PGN'] ?></div>
                                 <div class="buttoncontainer">
 
-
-                                    <form action="/game" method="GET">
+                                    <form method="GET" action="/game">
                                         <input type="hidden" name="id" value="<?= $game['id'] ?>">
                                         <input type="submit" class="chessbutton analysisbutton" value="Open in analysisboard">
                                     </form>
@@ -35,13 +34,11 @@
                                         <input type="submit" class="chessbutton mygamesbutton" value="Add to My Games">
                                     </form>
 
-                                    <form action="/game" method="POST">
+                                    <form method="POST" action="/game">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="id" value="<?= $game['id'] ?>">
                                         <input type="submit" class="chessbutton deletebutton" value="Delete">
-                                    </form>
-
-                                    
+                                    </form>                                  
                                 </div>
                             </div>
                         </div>
@@ -50,11 +47,8 @@
                 </tbody>
             </table>
         </div>
-
-
     </div>
 </div>
 
 <script src="./js/boardconfigdbgames.js"></script>
-<!-- <script src="./js/boardconfiganalysis.js"></script> -->
 <!-- <?php require __DIR__ . '/../partials/footer.php'; ?> -->

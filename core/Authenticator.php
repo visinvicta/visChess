@@ -5,19 +5,24 @@ namespace Core;
 
 class Authenticator
 {
-    public function attempt($email, $password) {
+
+
+    public function attempt($email, $password)
+    {
         $user = App::resolve(Database::class)
-            ->query('select * from users where email = :email', [
+            ->query('SELECT * FROM users WHERE email = :email', [
                 'email' => $email
             ])->find();
 
         $username = $this->getUsername($email);
+        $userid = $this->getUserId($email);
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $this->login([
                     'email' => $email,
-                    'name' => $username
+                    'name' => $username,
+                    'id' => $userid
                 ]);
                 return true;
             }
@@ -26,23 +31,35 @@ class Authenticator
     }
 
 
-    public function getUsername($email) {
+    public function getUsername($email)
+    {
         $username = App::resolve(Database::class)->query('SELECT username FROM users WHERE email = :email', [
             'email' => $email
         ])->find();
         return $username;
     }
 
-    public function login($user) {
+    public function getUserId($email)
+    {
+        $userid = App::resolve(Database::class)->query('SELECT id FROM users WHERE email = :email', [
+            'email' => $email
+        ])->find();
+        return $userid;
+    }
+
+    public function login($user)
+    {
         $_SESSION['user'] = [
             'email' => $user['email'],
-            'name' => $user['name']
-            
+            'name' => $user['name'],
+            'id' => $user['id']
+
         ];
         session_regenerate_id(true);
     }
 
-    public function logout() {
+    public function logout()
+    {
         $_SESSION = [];
         session_destroy();
 
