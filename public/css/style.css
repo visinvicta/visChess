@@ -118,8 +118,13 @@ body .container .content .main {
     align-self: flex-end;
 }
 
+.buttoncontainer.chessbutton { 
+    padding-left: 20px;
+}
+
 .buttoncontainer {
     display: flex;
+    align-self: center;
     justify-content: space-around;
     flex-direction: row;
 }

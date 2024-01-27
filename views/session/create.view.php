@@ -1,6 +1,7 @@
 <?php require base_path('views/partials/head.php'); ?>
 <?php require base_path('views/partials/banner.php'); ?>
 
+
 <div class="content">
     <div class="main">
         <div class="header">
@@ -11,7 +12,12 @@
             <div class="register_container">
 
                 <label for="email"><b>Email</b></label>
-                <input class="registerfield" type="text" name="email" id="email" required>
+                <input class="registerfield" 
+                type="text" 
+                name="email" 
+                id="email"
+                value="<?= old('email')?>" 
+                required>
 
                 <label for="password"><b>Password</b></label>
                 <input class="registerfield" type="password" name="password" id="password" required><br>

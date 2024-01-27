@@ -28,17 +28,18 @@
                                         <input type="hidden" name="id" value="<?= $game['id'] ?>">
                                         <input type="submit" class="chessbutton analysisbutton" value="Open in analysisboard">
                                     </form>
+                                    <?php if ($_SESSION['user'] ?? false) : ?>
+                                        <form method="POST">
+                                            <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
+                                            <input type="submit" class="chessbutton mygamesbutton" value="Add to My Games">
+                                        </form>
 
-                                    <form method="POST">
-                                        <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
-                                        <input type="submit" class="chessbutton mygamesbutton" value="Add to My Games">
-                                    </form>
-
-                                    <form method="POST" action="/game">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="id" value="<?= $game['id'] ?>">
-                                        <input type="submit" class="chessbutton deletebutton" value="Delete">
-                                    </form>                                  
+                                        <form method="POST" action="/game">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="id" value="<?= $game['id'] ?>">
+                                            <input type="submit" class="chessbutton deletebutton" value="Delete">
+                                        </form>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

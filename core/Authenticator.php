@@ -6,6 +6,9 @@ namespace Core;
 class Authenticator
 {
 
+    protected $username;
+    protected $userId;
+
 
     public function attempt($email, $password)
     {
@@ -13,16 +16,13 @@ class Authenticator
             ->query('SELECT * FROM users WHERE email = :email', [
                 'email' => $email
             ])->find();
-
-        $username = $this->getUsername($email);
-        $userid = $this->getUserId($email);
-
+       
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $this->login([
                     'email' => $email,
-                    'name' => $username,
-                    'id' => $userid
+                    'name' => $this->getUsername($email),
+                    'id' => $this->getUserId($email)
                 ]);
                 return true;
             }
@@ -60,10 +60,8 @@ class Authenticator
 
     public function logout()
     {
-        $_SESSION = [];
-        session_destroy();
-
-        $params = session_get_cookie_params();
-        setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+        {
+            Session::destroy();
+        }
     }
 }
